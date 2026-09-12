@@ -2,6 +2,7 @@ import { useState, type FormEvent, type ReactNode } from 'react';
 import { ArrowDown, ArrowUpRight, BrainCircuit, CheckCircle2, Code2, Database, ExternalLink, Github, Layers3, Linkedin, MapPin, Menu, Send, X } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
+import { sendContactMessage } from '@/lib/emailjs';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
@@ -82,9 +83,9 @@ function SectionKicker({ number, children }: { number: string; children: ReactNo
 }
 
 function Home() {
-  const [contactStatus, setContactStatus] = useState<'idle' | 'success'>('idle');
+  const [contactStatus, setContactStatus] = useState<'idle' | 'sending' | 'success'>('idle');
   const [contactError, setContactError] = useState('');
-  const handleContact = (event: FormEvent<HTMLFormElement>) => {
+  const handleContact = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const values = new FormData(event.currentTarget);
     const name = String(values.get('name') ?? '').trim();
@@ -107,9 +108,18 @@ function Home() {
       setContactError('A little more context would make this note useful (10 characters minimum).');
       return;
     }
+
     setContactError('');
-    setContactStatus('success');
-    event.currentTarget.reset();
+    setContactStatus('sending');
+
+    try {
+      await sendContactMessage({ name, email, subject, message });
+      setContactStatus('success');
+      event.currentTarget.reset();
+    } catch (error) {
+      setContactStatus('idle');
+      setContactError(error instanceof Error ? error.message : 'The message could not be sent. Please try again.');
+    }
   };
 
   return (
@@ -297,7 +307,7 @@ function Home() {
               </div>
               <div>
                 {contactStatus === 'success' ? (
-                  <div className="border border-[hsl(var(--secondary)/.45)] bg-[hsl(var(--secondary)/.08)] p-8 md:p-12" role="status" data-testid="status-contact-success"><CheckCircle2 size={24} className="text-[hsl(var(--secondary))]" aria-hidden="true" /><h3 className="mt-5 font-display text-3xl">Message noted.</h3><p className="mt-3 text-sm leading-6 text-[hsl(var(--muted-foreground))]">Your note is saved locally for this session. No email was sent.</p><button type="button" onClick={() => setContactStatus('idle')} className="mt-7 text-xs font-bold uppercase tracking-[.1em] text-[hsl(var(--secondary))] underline underline-offset-4" data-testid="button-contact-reset">Write another note</button></div>
+                  <div className="border border-[hsl(var(--secondary)/.45)] bg-[hsl(var(--secondary)/.08)] p-8 md:p-12" role="status" data-testid="status-contact-success"><CheckCircle2 size={24} className="text-[hsl(var(--secondary))]" aria-hidden="true" /><h3 className="mt-5 font-display text-3xl">that message is sent</h3><p className="mt-3 text-sm leading-6 text-[hsl(var(--muted-foreground))]">Thanks for reaching out. I&apos;ll get back to you soon.</p><button type="button" onClick={() => setContactStatus('idle')} className="mt-7 text-xs font-bold uppercase tracking-[.1em] text-[hsl(var(--secondary))] underline underline-offset-4" data-testid="button-contact-reset">Write another note</button></div>
                 ) : (
                   <form onSubmit={handleContact} className="space-y-5" noValidate>
                     <div><label htmlFor="contact-name" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">Your name</label><input id="contact-name" name="name" required minLength={2} className="w-full border-b border-[hsl(var(--border))] bg-transparent px-0 py-3 text-sm placeholder:text-[hsl(var(--muted-foreground)/.65)] focus:border-[hsl(var(--secondary))] focus:outline-none" placeholder="What should I call you?" data-testid="input-contact-name" /></div>
@@ -305,7 +315,7 @@ function Home() {
                      <div><label htmlFor="contact-subject" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">Subject</label><input id="contact-subject" name="subject" required minLength={2} className="w-full border-b border-[hsl(var(--border))] bg-transparent px-0 py-3 text-sm placeholder:text-[hsl(var(--muted-foreground)/.65)] focus:border-[hsl(var(--secondary))] focus:outline-none" placeholder="Internship, collaboration, or a question" data-testid="input-contact-subject" /></div>
                      <div><label htmlFor="contact-message" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">Message</label><textarea id="contact-message" name="message" required minLength={10} rows={4} className="w-full resize-none border-b border-[hsl(var(--border))] bg-transparent px-0 py-3 text-sm placeholder:text-[hsl(var(--muted-foreground)/.65)] focus:border-[hsl(var(--secondary))] focus:outline-none" placeholder="A little context goes a long way." data-testid="textarea-contact-message" /></div>
                     {contactError && <p className="text-xs leading-5 text-[hsl(var(--destructive))]" role="alert" data-testid="status-contact-error">{contactError}</p>}
-                    <button type="submit" className="inline-flex items-center gap-3 bg-[hsl(var(--foreground))] px-5 py-3 text-xs font-bold uppercase tracking-[.1em] text-[hsl(var(--background))] transition-transform hover:-translate-y-1" data-testid="button-contact-submit">Save note locally <Send size={14} aria-hidden="true" /></button>
+                    <button type="submit" disabled={contactStatus === 'sending'} className="inline-flex items-center gap-3 bg-[hsl(var(--foreground))] px-5 py-3 text-xs font-bold uppercase tracking-[.1em] text-[hsl(var(--background))] transition-transform hover:-translate-y-1 disabled:cursor-wait disabled:opacity-60" data-testid="button-contact-submit">{contactStatus === 'sending' ? 'Sending…' : 'Send'} <Send size={14} aria-hidden="true" /></button>
                   </form>
                 )}
               </div>
