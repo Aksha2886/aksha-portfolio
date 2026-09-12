@@ -15,7 +15,6 @@ const navItems = [
   ['home', 'Home'],
   ['about', 'About'],
   ['skills', 'Skills'],
-  ['work', 'Work'],
   ['learning', 'Certifications'],
   ['education', 'Education'],
   ['contact', 'Contact'],
@@ -131,8 +130,8 @@ function Home() {
                 I&apos;m Aksha — a Computer Science &amp; Engineering student learning to turn curiosity into useful software, one deliberate step at a time.
               </p>
               <div className="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-4">
-                <a href="#work" className="inline-flex items-center gap-3 bg-[hsl(var(--foreground))] px-5 py-3 text-xs font-bold uppercase tracking-[.1em] text-[hsl(var(--background))] transition-transform hover:-translate-y-1" data-testid="link-hero-work">
-                  View My Work <ArrowDown size={15} aria-hidden="true" />
+                <a href="#about" className="inline-flex items-center gap-3 bg-[hsl(var(--foreground))] px-5 py-3 text-xs font-bold uppercase tracking-[.1em] text-[hsl(var(--background))] transition-transform hover:-translate-y-1" data-testid="link-hero-about">
+                  Explore the journey <ArrowDown size={15} aria-hidden="true" />
                 </a>
                 <a href="#contact" className="inline-flex items-center gap-2 px-2 py-3 text-xs font-bold uppercase tracking-[.1em] text-[hsl(var(--foreground))] underline decoration-[hsl(var(--accent))] decoration-2 underline-offset-4" data-testid="link-hero-contact">
                   Let&apos;s Connect <ArrowUpRight size={15} className="magnetic-arrow" aria-hidden="true" />
@@ -168,53 +167,38 @@ function Home() {
               <div className="max-w-2xl text-[15px] leading-8 text-[hsl(var(--muted-foreground))]">
                 <p>My starting point is simple: understand the fundamentals, make things carefully, and keep asking better questions. I&apos;m currently pursuing Computer Science &amp; Engineering at New LJ Institute of Engineering and Technology under GTU, Ahmedabad.</p>
                 <p className="mt-5">Python is where my technical foundation has taken shape so far. From there, I&apos;m exploring data structures, data science, machine learning, AI-assisted development, and the web — not as a list of labels, but as connected ways to solve problems.</p>
-                <p className="mt-5 text-[hsl(var(--foreground))]">The work section is intentionally open. Verified projects will earn their place here as they are built.</p>
+                <p className="mt-5 text-[hsl(var(--foreground))]">I’m building toward a portfolio of work that can be explained clearly, shared openly, and stood behind.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="skills" className="scroll-mt-24 bg-[hsl(var(--foreground))] py-24 text-[hsl(var(--background))] md:py-32">
+        <section id="skills" className="scroll-mt-24 border-t border-[hsl(var(--border))] py-24 text-[hsl(var(--foreground))] md:py-32">
           <div className="section-wrap">
-            <SectionKicker number="02"><span className="text-[hsl(var(--accent))]">Skills &amp; competencies</span></SectionKicker>
+            <SectionKicker number="02">Skills &amp; competencies</SectionKicker>
             <div className="grid gap-12 md:grid-cols-[.7fr_1.3fr] md:gap-20">
               <div>
                 <h2 className="font-display text-4xl leading-[1.05] tracking-[-.04em] md:text-6xl">The toolkit is growing.</h2>
-                <p className="mt-6 max-w-sm text-sm leading-7 text-[hsl(var(--background)/.65)]">A current snapshot of what I&apos;m practicing, and the kind of work I want to grow into.</p>
+                <p className="mt-6 max-w-sm text-sm leading-7 text-[hsl(var(--muted-foreground))]">A current snapshot of what I&apos;m practicing, and the kind of work I want to grow into.</p>
               </div>
-              <div className="divide-y divide-[hsl(var(--background)/.18)]">
+              <div className="divide-y divide-[hsl(var(--border))]">
                 {skills.map(({ icon: Icon, label, note }, index) => (
                   <div key={label} className="group flex items-center justify-between gap-5 py-6" data-testid={`skill-row-${index}`}>
-                    <div className="flex items-center gap-5"><span className="font-mono-custom text-[10px] text-[hsl(var(--accent))]">0{index + 1}</span><Icon size={20} strokeWidth={1.4} className="text-[hsl(var(--secondary))]" aria-hidden="true" /><div><h3 className="text-base font-bold">{label}</h3><p className="mt-1 text-xs text-[hsl(var(--background)/.55)]">{note}</p></div></div>
-                    <ArrowUpRight size={17} className="magnetic-arrow text-[hsl(var(--background)/.45)]" aria-hidden="true" />
+                    <div className="flex items-center gap-5"><span className="font-mono-custom text-[10px] text-[hsl(var(--accent))]">0{index + 1}</span><Icon size={20} strokeWidth={1.4} className="text-[hsl(var(--secondary))]" aria-hidden="true" /><div><h3 className="text-base font-bold">{label}</h3><p className="mt-1 text-xs text-[hsl(var(--muted-foreground))]">{note}</p></div></div>
+                    <ArrowUpRight size={17} className="magnetic-arrow text-[hsl(var(--muted-foreground))]" aria-hidden="true" />
                   </div>
                 ))}
               </div>
             </div>
-            <div className="mt-16 flex flex-wrap gap-2 border-t border-[hsl(var(--background)/.18)] pt-8" aria-label="Competency tags">
-              {['Problem solving', 'Curiosity', 'Consistency', 'Clear communication', 'Learning in public'].map((item) => <span key={item} className="skill-chip border border-[hsl(var(--background)/.22)] px-3 py-2 font-mono-custom text-[10px] uppercase tracking-[.08em] text-[hsl(var(--background)/.7)]">{item}</span>)}
+            <div className="mt-16 flex flex-wrap gap-2 border-t border-[hsl(var(--border))] pt-8" aria-label="Competency tags">
+              {['Problem solving', 'Curiosity', 'Consistency', 'Clear communication', 'Learning in public'].map((item) => <span key={item} className="skill-chip border border-[hsl(var(--border))] px-3 py-2 font-mono-custom text-[10px] uppercase tracking-[.08em] text-[hsl(var(--muted-foreground))]">{item}</span>)}
             </div>
           </div>
         </section>
 
-        <section id="work" className="scroll-mt-24 py-24 md:py-32">
+        <section id="beyond" className="scroll-mt-24 border-t border-[hsl(var(--border))] bg-[hsl(var(--background))] py-24 md:py-32">
           <div className="section-wrap">
-            <SectionKicker number="03">Selected work</SectionKicker>
-            <div className="work-card relative overflow-hidden border border-[hsl(var(--border))] p-8 md:p-16">
-              <div className="pointer-events-none absolute right-[-40px] top-[-60px] font-display text-[240px] leading-none text-[hsl(var(--secondary)/.06)]">∅</div>
-              <div className="relative max-w-2xl">
-                <span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--accent))]">Portfolio / 2026 →</span>
-                <h2 className="mt-6 font-display text-4xl leading-[1.05] tracking-[-.04em] md:text-6xl">Nothing verified here yet.</h2>
-                <p className="mt-6 max-w-lg text-sm leading-7 text-[hsl(var(--muted-foreground))]">That is not an omission. It is a promise not to fill the space with inflated case studies or invented outcomes. This area is ready for work that can be explained, shared, and stood behind.</p>
-                <div className="mt-9 flex items-center gap-3 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--secondary))]"><span className="h-2 w-2 rounded-full bg-[hsl(var(--accent))] pulse-soft" /> Open for future projects</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="beyond" className="scroll-mt-24 border-t border-[hsl(var(--border))] bg-[hsl(var(--muted)/.42)] py-24 md:py-32">
-          <div className="section-wrap">
-            <SectionKicker number="04">Beyond the classroom</SectionKicker>
+            <SectionKicker number="03">Beyond the classroom</SectionKicker>
             <div className="grid gap-10 md:grid-cols-[1.1fr_.9fr] md:gap-24">
               <div>
                 <h2 className="max-w-xl font-display text-4xl leading-[1.05] tracking-[-.04em] md:text-6xl">The real curriculum is what keeps your attention.</h2>
@@ -233,7 +217,7 @@ function Home() {
 
         <section id="learning" className="scroll-mt-24 py-24 md:py-32">
           <div className="section-wrap">
-            <SectionKicker number="05">Certifications &amp; learning</SectionKicker>
+            <SectionKicker number="04">Certifications &amp; learning</SectionKicker>
             <div className="grid gap-10 md:grid-cols-[.72fr_1.28fr] md:gap-24">
               <div>
                 <h2 className="font-display text-4xl leading-[1.05] tracking-[-.04em] md:text-6xl">Proof of practice.</h2>
@@ -264,7 +248,7 @@ function Home() {
 
         <section id="education" className="scroll-mt-24 border-t border-[hsl(var(--border))] py-24 md:py-32">
           <div className="section-wrap">
-            <SectionKicker number="06">Education</SectionKicker>
+            <SectionKicker number="05">Education</SectionKicker>
             <div className="grid gap-10 md:grid-cols-[.7fr_1.3fr] md:items-start md:gap-20">
               <div><span className="font-mono-custom text-xs text-[hsl(var(--accent))]">2024 — 2028</span><p className="mt-3 text-xs uppercase tracking-[.1em] text-[hsl(var(--muted-foreground))]">GTU · Ahmedabad, India</p></div>
               <div><h2 className="max-w-2xl font-display text-4xl leading-[1.05] tracking-[-.04em] md:text-6xl">New LJ Institute of Engineering and Technology</h2><p className="mt-5 text-sm font-bold text-[hsl(var(--secondary))]">B.Tech · Computer Science &amp; Engineering</p><div className="mt-10 grid max-w-xl grid-cols-2 border border-[hsl(var(--border))]"><div className="border-r border-[hsl(var(--border))] p-5"><p className="font-display text-4xl">5th</p><p className="mt-2 font-mono-custom text-[9px] uppercase tracking-[.1em] text-[hsl(var(--muted-foreground))]">Semester now</p></div><div className="p-5"><p className="font-display text-4xl text-[hsl(var(--secondary))]">9.78</p><p className="mt-2 font-mono-custom text-[9px] uppercase tracking-[.1em] text-[hsl(var(--muted-foreground))]">Verified CGPA to Sem 4</p></div></div></div>
@@ -274,7 +258,7 @@ function Home() {
 
         <section id="languages" className="scroll-mt-24 border-t border-[hsl(var(--border))] py-20 md:py-24">
           <div className="section-wrap flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
-            <div><SectionKicker number="06b">Languages</SectionKicker><h2 className="font-display text-4xl leading-[1.05] tracking-[-.04em] md:text-5xl">The languages I use to connect.</h2></div>
+            <div><SectionKicker number="05b">Languages</SectionKicker><h2 className="font-display text-4xl leading-[1.05] tracking-[-.04em] md:text-5xl">The languages I use to connect.</h2></div>
             <div className="flex flex-wrap gap-3" aria-label="Languages">
               {['English', 'Hindi', 'Gujarati'].map((language) => (
                 <span key={language} className="border border-[hsl(var(--border))] px-5 py-3 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--foreground))]" data-testid={`language-${language.toLowerCase()}`}>
@@ -285,21 +269,21 @@ function Home() {
           </div>
         </section>
 
-        <section id="career" className="scroll-mt-24 bg-[hsl(var(--accent))] py-24 md:py-32">
+        <section id="career" className="scroll-mt-24 border-t border-[hsl(var(--border))] py-24 md:py-32">
           <div className="section-wrap">
             <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-              <div><p className="eyebrow !text-[hsl(var(--foreground))]">Career direction</p><h2 className="mt-6 max-w-4xl font-display text-5xl leading-[.98] tracking-[-.05em] md:text-8xl">Learning today.<br />Building tomorrow.</h2></div>
-              <p className="max-w-xs text-sm leading-6 text-[hsl(var(--foreground)/.7)]">I&apos;m moving toward software development roles where strong fundamentals meet useful, human-centred technology.</p>
+              <div><p className="eyebrow">Career direction</p><h2 className="mt-6 max-w-4xl font-display text-5xl leading-[.98] tracking-[-.05em] md:text-8xl">Learning today.<br />Building tomorrow.</h2></div>
+              <p className="max-w-xs text-sm leading-6 text-[hsl(var(--muted-foreground))]">I&apos;m moving toward software development roles where strong fundamentals meet useful, human-centred technology.</p>
             </div>
-            <div className="mt-16 grid gap-px bg-[hsl(var(--foreground)/.22)] md:grid-cols-3">
-              {['Software development', 'Python & data', 'AI-assisted product building'].map((item, index) => <div key={item} className="bg-[hsl(var(--accent))] p-6"><span className="font-mono-custom text-[10px] text-[hsl(var(--foreground)/.55)]">0{index + 1}</span><p className="mt-7 font-display text-2xl">{item}</p></div>)}
+            <div className="mt-16 grid gap-px border border-[hsl(var(--border))] bg-[hsl(var(--border))] md:grid-cols-3">
+              {['Software development', 'Python & data', 'AI-assisted product building'].map((item, index) => <div key={item} className="bg-[hsl(var(--background))] p-6"><span className="font-mono-custom text-[10px] text-[hsl(var(--accent))]">0{index + 1}</span><p className="mt-7 font-display text-2xl">{item}</p></div>)}
             </div>
           </div>
         </section>
 
         <section id="contact" className="scroll-mt-24 py-24 md:py-32">
           <div className="section-wrap">
-            <SectionKicker number="07">Contact</SectionKicker>
+            <SectionKicker number="06">Contact</SectionKicker>
             <div className="grid gap-14 md:grid-cols-[.82fr_1.18fr] md:gap-24">
               <div>
                 <h2 className="font-display text-5xl leading-[.98] tracking-[-.05em] md:text-7xl">Have a good question?</h2>

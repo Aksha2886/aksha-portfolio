@@ -34,21 +34,21 @@
 }
 
 :root {
-  --background: 37 34% 94%;
-  --foreground: 214 24% 17%;
-  --border: 35 18% 80%;
-  --input: 35 18% 80%;
-  --ring: 186 59% 35%;
-  --card: 38 38% 97%;
-  --card-foreground: 214 24% 17%;
-  --card-border: 35 18% 80%;
-  --primary: 214 24% 17%;
-  --primary-foreground: 37 34% 94%;
-  --secondary: 186 59% 35%;
-  --secondary-foreground: 37 34% 94%;
-  --muted: 36 22% 88%;
-  --muted-foreground: 214 11% 43%;
-  --accent: 12 71% 60%;
+  --background: 0 0% 100%;
+  --foreground: 218 24% 16%;
+  --border: 215 18% 86%;
+  --input: 215 18% 86%;
+  --ring: 187 62% 32%;
+  --card: 0 0% 100%;
+  --card-foreground: 218 24% 16%;
+  --card-border: 215 18% 86%;
+  --primary: 218 24% 16%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 187 62% 32%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 20% 97%;
+  --muted-foreground: 218 11% 43%;
+  --accent: 10 69% 58%;
   --accent-foreground: 214 24% 17%;
   --destructive: 4 68% 48%;
   --destructive-foreground: 0 0% 100%;
@@ -97,16 +97,6 @@
   .section-wrap { width: min(100% - 3rem, 1180px); margin-inline: auto; }
   .eyebrow { font-family: var(--app-font-mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: hsl(var(--secondary)); }
   .text-balance { text-wrap: balance; }
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .032;
-  z-index: 50;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
 }
 
 .reveal { animation: reveal-up .8s cubic-bezier(.2,.75,.2,1) both; }
