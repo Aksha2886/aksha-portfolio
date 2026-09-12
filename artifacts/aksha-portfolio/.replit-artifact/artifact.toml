@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Aksha Mirza Portfolio"
+description = "A premium personal portfolio for Aksha Mirza, a Computer Science & Engineering student exploring software development, Python, AI-assisted development, web technologies, and data science."
+version = "1.0.0"
+id = "artifacts/aksha-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24590
+
+[services.development]
+run = "pnpm --filter @workspace/aksha-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aksha-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/aksha-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24590"
+BASE_PATH = "/"
