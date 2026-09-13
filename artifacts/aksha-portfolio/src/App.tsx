@@ -130,6 +130,22 @@ function Home() {
           <div className="pointer-events-none absolute right-[-12%] top-[10%] h-[570px] w-[570px] rounded-full border border-[hsl(var(--secondary)/.22)] md:right-[-4%]" />
           <div className="pointer-events-none absolute right-[7%] top-[20%] h-[380px] w-[380px] rounded-full border border-[hsl(var(--accent)/.28)]" />
           <div className="pointer-events-none absolute right-[21%] top-[34%] h-[130px] w-[130px] rounded-full bg-[hsl(var(--accent)/.12)] blur-2xl" />
+          <div className="pointer-events-none absolute right-[14%] top-[22%] z-0 hidden w-[290px] rotate-[-5deg] border border-[hsl(var(--border))] bg-[hsl(var(--background)/.94)] shadow-[12px_16px_0_hsl(var(--secondary)/.08)] md:block" aria-hidden="true">
+            <div className="flex items-center justify-between border-b border-[hsl(var(--border))] px-4 py-3">
+              <div className="flex gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-[hsl(var(--accent)/.75)]" />
+                <span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary)/.65)]" />
+                <span className="h-2 w-2 rounded-full bg-[hsl(var(--foreground)/.25)]" />
+              </div>
+              <span className="font-mono-custom text-[9px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">aksha.py</span>
+            </div>
+            <div className="space-y-3 p-5 font-mono-custom text-[11px] leading-5">
+              <p><span className="text-[hsl(var(--accent))]">01</span> <span className="text-[hsl(var(--secondary))]">def</span> keep_building():</p>
+              <p className="pl-6 text-[hsl(var(--muted-foreground))]">learn<span className="text-[hsl(var(--foreground))]">.</span>practice<span className="text-[hsl(var(--foreground))]">()</span></p>
+              <p className="pl-6 text-[hsl(var(--muted-foreground))]">ship<span className="text-[hsl(var(--foreground))]">.</span>iterate<span className="text-[hsl(var(--foreground))]">()</span></p>
+              <p><span className="text-[hsl(var(--accent))]">05</span> <span className="text-[hsl(var(--secondary))]">return</span> <span className="text-[hsl(var(--foreground))]">&quot;what&apos;s next&quot;</span></p>
+            </div>
+          </div>
           <div className="section-wrap relative grid w-full gap-12 md:grid-cols-[1.2fr_.8fr] md:items-end">
             <div>
               <p className="eyebrow reveal" data-testid="text-hero-kicker">Computer Science &amp; Engineering · Ahmedabad, India</p>
