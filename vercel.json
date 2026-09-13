@@ -2,5 +2,5 @@
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @workspace/aksha-portfolio run build",
-  "outputDirectory": "artifacts/aksha-portfolio/dist/public"
+  "outputDirectory": "artifacts/aksha-portfolio/dist"
 }
