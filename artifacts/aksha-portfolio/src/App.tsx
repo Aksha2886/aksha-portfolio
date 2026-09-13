@@ -11,6 +11,7 @@ import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 const queryClient = new QueryClient();
 const githubUrl = 'https://github.com/Aksha2886';
 const linkedinUrl = 'https://www.linkedin.com/in/aksha-mirza';
+const emailAddress = 'aksha.official28@gmail.com';
 
 const navItems = [
   ['home', 'Home'],
@@ -308,11 +309,11 @@ function Home() {
             <div className="grid gap-14 md:grid-cols-[.82fr_1.18fr] md:gap-24">
               <div>
                 <h2 className="font-display text-5xl leading-[.98] tracking-[-.05em] md:text-7xl">Have a good question?</h2>
-                <p className="mt-7 max-w-sm text-sm leading-7 text-[hsl(var(--muted-foreground))]">I&apos;d be glad to hear from recruiters, collaborators, mentors, and fellow learners. This form stays local to the page — it does not send email.</p>
+                <p className="mt-7 max-w-sm text-sm leading-7 text-[hsl(var(--muted-foreground))]">I&apos;d be glad to hear from recruiters, collaborators, mentors, and fellow learners. Use the form or reach me directly by email.</p>
                 <div className="mt-9 space-y-4 text-sm">
                   <a href={githubUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 font-bold hover:text-[hsl(var(--secondary))]" aria-label="View Aksha Mirza's GitHub profile" data-testid="link-contact-github"><Github size={17} aria-hidden="true" /> View GitHub <ArrowUpRight size={14} className="magnetic-arrow" aria-hidden="true" /></a>
                    <a href={linkedinUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 font-bold hover:text-[hsl(var(--secondary))]" aria-label="Connect with Aksha Mirza on LinkedIn" data-testid="link-contact-linkedin"><Linkedin size={17} aria-hidden="true" /> Connect on LinkedIn <ArrowUpRight size={14} className="magnetic-arrow" aria-hidden="true" /></a>
-                   <div className="flex items-center gap-3 text-[hsl(var(--muted-foreground))]"><Send size={17} aria-hidden="true" /> Email · available on request</div>
+                    <a href={`mailto:${emailAddress}`} className="flex items-center gap-3 font-bold hover:text-[hsl(var(--secondary))]" aria-label={`Email Aksha Mirza at ${emailAddress}`} data-testid="link-contact-email"><Send size={17} aria-hidden="true" /> {emailAddress} <ArrowUpRight size={14} className="magnetic-arrow" aria-hidden="true" /></a>
                   <div className="flex items-center gap-3 text-[hsl(var(--muted-foreground))]"><MapPin size={17} aria-hidden="true" /> Ahmedabad, India</div>
                 </div>
               </div>
