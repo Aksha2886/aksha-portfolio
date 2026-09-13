@@ -88,7 +88,8 @@ function Home() {
   const [contactError, setContactError] = useState('');
   const handleContact = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const values = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const values = new FormData(form);
     const name = String(values.get('name') ?? '').trim();
     const email = String(values.get('email') ?? '').trim();
     const subject = String(values.get('subject') ?? '').trim();
@@ -116,7 +117,7 @@ function Home() {
     try {
       await sendContactMessage({ name, email, subject, message });
       setContactStatus('success');
-      event.currentTarget.reset();
+      form.reset();
     } catch (error) {
       setContactStatus('idle');
       setContactError(error instanceof Error ? error.message : 'The message could not be sent. Please try again.');
